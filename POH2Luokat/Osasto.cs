@@ -6,31 +6,48 @@ using System.Threading.Tasks;
 
 namespace POH2Luokat
 {
-    class Osasto : IId, INimi
+    public class Osasto : IId, INimi
     {
-        public int Id;
-        public string Nimi;
-        public List<Tyontekija> Tyontekijat;
-        public int HenkiloLkm;
+        public int Id { get; private set; }
+        public string Nimi { get; set; }
+        public List<Tyontekija> Tyontekijat { get; set; }
+        public int HenkiloLkm { get { return (this.Tyontekijat.Count); } }
 
         public Osasto() {
-
+            this.Tyontekijat = new List<Tyontekija>();
         }
 
-        public Osasto(int id, string nimi) {
-
+        public Osasto(int id, string nimi) : this() {
+            this.Id = id;
+            this.Nimi = nimi;
         }
 
         public override string ToString() {
-            return base.ToString();
+            return ($"{this.Nimi} ({this.HenkiloLkm})");
         }
 
         public void Palkkaa(Tyontekija tyontekija, double palkka) {
+            tyontekija.Palkka = palkka;
+            tyontekija.PalkkausPvm = DateTime.Now;
+            this.Tyontekijat.Add(tyontekija);
 
         }
 
         public void Erota(Tyontekija tyontekija) {
+            tyontekija.PaattymisPvm = DateTime.Now;
+            this.Tyontekijat.Remove(tyontekija);
+        }
 
+        /// <summary>
+        /// Generoi Dataa
+        /// </summary>
+        /// <param name="lkm"></param>
+        public static List<Osasto> GeneroiData(int lkm) {
+            var data = new List<Osasto>();
+            for (int i = 0; i < lkm; i++) {
+                data.Add(new Osasto(i + 1, $"Osasto {i + 1}"));
+            }
+            return (data);
         }
     }
 }
