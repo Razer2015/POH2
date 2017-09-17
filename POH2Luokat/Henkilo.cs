@@ -8,10 +8,16 @@ namespace POH2Luokat
 {
     class Henkilo
     {
-        public string EtuNimi;
-        public string SukuNimi;
-        public DateTime? SyntymaAika;
-        public int Ika;
+        public string EtuNimi { get; set; }
+        public string SukuNimi { get; set; }
+        public DateTime? SyntymaAika { get; set; }
+        public int Ika
+        {
+            get
+            {
+                return ();
+            }
+        };
 
         public Henkilo() {
 

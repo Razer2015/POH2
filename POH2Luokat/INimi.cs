@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace POH2Luokat
 {
-    interface INimi
+    public interface INimi
     {
+        string Nimi { get; }
     }
 }

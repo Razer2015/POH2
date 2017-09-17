@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace POH2Luokat
 {
-    interface IId
+    public interface IId
     {
+        int Id { get; }
+
+
     }
 }
