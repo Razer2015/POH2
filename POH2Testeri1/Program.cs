@@ -1,9 +1,5 @@
 ﻿using POH2Luokat;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using System.IO;
 
@@ -73,12 +69,16 @@ namespace POH2Testeri1
         }
 
         private static void PalkkausKasittelija(object sender, Tyontekija t, CancelEventArgs e) {
+            // C:\temp\POH2PalkkausLoki.txt
+            // POH2PalkkausLoki.txt -> exen kanssa samaan kansioon
             KirjoitaLokiin("POH2PalkkausLoki.txt", 
                 $"{((Osasto)sender).Nimi} {DateTime.Now.ToString("dd.MM.yyyy")} {t.Nimi} {t.SyntymaAika.Value.ToString("dd.MM.yyyy")}");
         }
 
 
         private static void ErottamisKasittelija(object sender, Tyontekija t, EventArgs e) {
+            // C:\temp\POH2ErottamisLoki.tx
+            // POH2ErottamisLoki.txt -> exen kanssa samaan kansioon
             KirjoitaLokiin("POH2ErottamisLoki.txt", string.Format("{0} {1} {2} {3}",
                 ((Osasto)sender).Nimi,
                 DateTime.Now.ToString("dd.MM.yyyy"),
